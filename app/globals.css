@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+@theme {
+  --font-display: var(--font-cormorant-garamond);
+  --font-script: var(--font-corinthia);
+  --font-body: var(--font-montserrat);
+}
+
 :root {
   color-scheme: light;
 }
@@ -12,7 +18,5 @@ body {
 body {
   background: linear-gradient(180deg, #fafaf9 0%, #f5f5f4 100%);
   color: #1c1917;
-  font-family:
-    "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua",
-    "URW Palladio L", serif;
+  font-family: var(--font-body), system-ui, sans-serif;
 }
