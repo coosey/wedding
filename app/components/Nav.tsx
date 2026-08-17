@@ -15,7 +15,7 @@ const NAV_LINKS = [
   { href: "/rsvp", label: "RSVP" },
 ];
 
-export default function Nav() {
+export function Nav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -63,7 +63,6 @@ export default function Nav() {
         aria-label="Toggle navigation menu"
         className="relative z-50 flex items-center gap-2 text-xs font-semibold tracking-[0.22em] uppercase sm:hidden"
       >
-        {open ? "Close" : "Menu"}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -72,13 +71,9 @@ export default function Nav() {
           strokeWidth={1.75}
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="size-4"
+          className="size-8"
         >
-          {open ? (
-            <path d="M6 6l12 12M18 6L6 18" />
-          ) : (
-            <path d="M4 7h16M4 12h16M4 17h16" />
-          )}
+          <path d="M4 7h16M4 12h16M4 17h16" />
         </svg>
       </button>
 
@@ -88,50 +83,63 @@ export default function Nav() {
           <div
             id="mobile-nav-menu"
             aria-hidden={!open}
-            className={`fixed inset-0 z-40 flex flex-col bg-stone-50 transition-all duration-300 ease-in-out sm:hidden ${
-              open
-                ? "translate-y-0 opacity-100"
-                : "pointer-events-none -translate-y-4 opacity-0"
+            className={`fixed inset-0 z-40 sm:hidden ${
+              open ? "pointer-events-auto" : "pointer-events-none"
             }`}
           >
-            <div className="mx-auto flex w-full max-w-6xl justify-end px-4 py-4 sm:px-6 lg:px-8">
-              <button
-                type="button"
-                onClick={() => setOpen(false)}
-                aria-label="Close navigation menu"
-                tabIndex={open ? undefined : -1}
-                className="flex items-center gap-2 text-xs font-semibold tracking-[0.22em] uppercase"
-              >
-                Close
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={1.75}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="size-4"
-                >
-                  <path d="M6 6l12 12M18 6L6 18" />
-                </svg>
-              </button>
-            </div>
+            <button
+              type="button"
+              aria-label="Close navigation menu"
+              tabIndex={open ? undefined : -1}
+              onClick={() => setOpen(false)}
+              className={`absolute inset-0 bg-stone-900/15 transition-opacity duration-150 ${
+                open ? "opacity-100" : "opacity-0"
+              }`}
+            />
 
-            <nav className="flex flex-1 flex-col items-center justify-center gap-8 pb-16 text-lg tracking-wide uppercase">
-              {NAV_LINKS.map(({ href, label }) => (
-                <Link
-                  key={href}
-                  href={href}
+            <div
+              className={`relative flex min-h-full flex-col bg-stone-50 transition-opacity duration-150 ${
+                open ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              <div className="mx-auto flex w-full max-w-6xl justify-end px-4 py-4 sm:px-6 lg:px-8">
+                <button
+                  type="button"
+                  onClick={() => setOpen(false)}
+                  aria-label="Close navigation menu"
                   tabIndex={open ? undefined : -1}
-                  className={`transition hover:opacity-70 ${
-                    pathname === href ? "underline underline-offset-4" : ""
-                  }`}
+                  className="flex items-center gap-2 text-xs font-semibold tracking-[0.22em] uppercase"
                 >
-                  {label}
-                </Link>
-              ))}
-            </nav>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={1.75}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="size-8"
+                  >
+                    <path d="M6 6l12 12M18 6L6 18" />
+                  </svg>
+                </button>
+              </div>
+
+              <nav className="flex flex-1 flex-col items-center justify-center gap-8 pb-16 text-lg tracking-wide uppercase">
+                {NAV_LINKS.map(({ href, label }) => (
+                  <Link
+                    key={href}
+                    href={href}
+                    tabIndex={open ? undefined : -1}
+                    className={`transition-opacity duration-150 hover:opacity-70 ${
+                      pathname === href ? "underline underline-offset-4" : ""
+                    } ${open ? "opacity-100" : "opacity-0"}`}
+                  >
+                    {label}
+                  </Link>
+                ))}
+              </nav>
+            </div>
           </div>,
           document.body,
         )}
