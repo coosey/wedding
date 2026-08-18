@@ -4,7 +4,9 @@ export function Footer() {
       <p className="font-display text-3xl font-semibold text-stone-700">
         C&amp;M
       </p>
-      <p className="text-base text-stone-700 sm:text-lg">08.13.2027 ❤️</p>
+      <p className="text-base text-md text-stone-700 sm:text-lg">
+        08.13.2027 ❤️
+      </p>
     </footer>
   );
 }
