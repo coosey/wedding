@@ -4,7 +4,7 @@ export function Rsvp() {
   return (
     <section className="rounded-3xl border border-stone-200 bg-white px-6 py-10 sm:px-10 sm:py-14 lg:px-12 lg:py-16">
       <h2 className="max-w-2xl font-display text-3xl font-semibold tracking-tight text-stone-900 sm:text-4xl lg:text-5xl">
-        PLEASE RSVP BY APRIL 14, 2027
+        We hope you’ll join us on this special day.
       </h2>
       <p className="mt-4 max-w-2xl text-sm leading-7 text-stone-700 sm:text-base">
         We are so excited to celebrate our wedding with you! Please RSVP by{" "}
