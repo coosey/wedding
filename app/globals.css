@@ -4,6 +4,17 @@
   --font-display: var(--font-cormorant-garamond);
   --font-script: var(--font-corinthia);
   --font-body: var(--font-montserrat);
+
+  --animate-marquee: marquee 48s linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
 }
 
 :root {
