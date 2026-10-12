@@ -14,7 +14,7 @@ function PartySection({
       <h2 className="flex flex-col items-center font-display text-xl font-semibold tracking-tight sm:text-2xl">
         {title}
       </h2>
-      <div className="flex flex-col items-center gap-6">
+      <div className="grid grid-cols-2 gap-x-4 gap-y-6">
         {members.map((member) => (
           <div
             key={member.name}
@@ -35,10 +35,6 @@ export default function WeddingPartyPage() {
       <h1 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
         WEDDING PARTY
       </h1>
-      <p className="text-sm leading-7 text-stone-700 sm:text-base">
-        Information about the wedding party will be shared here in a simple
-        mobile-friendly format.
-      </p>
       <div className="space-y-10 pt-8">
         <PartySection title="Bridesmaids" members={BRIDESMAIDS} />
         <PartySection title="Groomsmen" members={GROOMSMEN} />
