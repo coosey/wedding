@@ -25,10 +25,10 @@ export default function DetailsPage() {
           THE DETAILS
         </h1>
         <div>
-          <p className="text-lg leading-relaxed text-stone-700 sm:text-xl">
+          <p className="text-lg leading-relaxed text-stone-700 sm:text-lg">
             Please join us for our wedding celebration on
           </p>
-          <p className="text-lg leading-relaxed text-stone-700 sm:text-xl">
+          <p className="text-lg leading-relaxed text-stone-700 sm:text-lg">
             August 13, 2027
           </p>
           <p className="text-base text-md pt-12 text-stone-700 sm:text-base">

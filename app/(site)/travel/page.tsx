@@ -7,7 +7,7 @@ export default function TravelPage() {
         <h1 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
           TRAVEL
         </h1>
-        <p className="text-sm leading-7 text-stone-700 sm:text-base">
+        <p className="text-base leading-7 text-stone-700 sm:text-lg">
           We&apos;re so excited to celebrate with you in Fallbrook. To make
           planning easier, we&apos;ve listed nearby hotel options for your stay.
         </p>
