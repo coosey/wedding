@@ -58,21 +58,28 @@ export function CountdownTimer() {
 
   return (
     <div
-      className="grid grid-cols-4 gap-3 sm:gap-6"
+      className="flex items-start justify-center gap-2 sm:gap-5"
       aria-label="Countdown to the wedding"
       role="timer"
     >
-      {UNITS.map(({ key, label }) => (
-        <div
-          key={key}
-          className="flex flex-col items-center gap-1 rounded-2xl border border-stone-200 bg-white px-2 py-4 sm:px-4 sm:py-6"
-        >
-          <span className="font-display text-3xl tabular-nums text-stone-900 sm:text-5xl">
-            {String(display[key]).padStart(2, "0")}
-          </span>
-          <span className="text-[0.65rem] tracking-[0.2em] text-stone-600 uppercase sm:text-xs">
-            {label}
-          </span>
+      {UNITS.map(({ key, label }, i) => (
+        <div key={key} className="flex items-start gap-2 sm:gap-5">
+          {i > 0 && (
+            <span
+              aria-hidden="true"
+              className="font-display text-4xl leading-none font-light text-stone-300 sm:text-7xl"
+            >
+              :
+            </span>
+          )}
+          <div className="flex flex-col items-center gap-2 sm:gap-3">
+            <span className="font-display text-5xl leading-none font-light tabular-nums text-stone-900 sm:text-7xl">
+              {String(display[key]).padStart(2, "0")}
+            </span>
+            <span className="text-[0.65rem] tracking-[0.25em] text-stone-500 uppercase sm:text-xs">
+              {label}
+            </span>
+          </div>
         </div>
       ))}
     </div>
