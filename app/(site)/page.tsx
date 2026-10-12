@@ -7,10 +7,10 @@ const IMAGES = [
   { src: "/images/test-1.jpg", alt: "test 1" },
   { src: "/images/test-2.jpg", alt: "test 2" },
   { src: "/images/test-3.jpg", alt: "test 3" },
+  { src: "/images/test-4.jpg", alt: "test 4" },
+  { src: "/images/test-5.jpg", alt: "test 5" },
+  { src: "/images/test-6.jpg", alt: "test 6" },
 ];
-
-const PANEL =
-  "relative z-10 rounded-3xl border border-stone-200 bg-white px-6 py-12 text-center sm:px-10 sm:py-20 lg:px-12 lg:py-24";
 
 export default function Page() {
   return (
@@ -31,16 +31,16 @@ export default function Page() {
           </p>
 
           <h1 className="flex flex-col items-center text-stone-900">
-            <span className="font-display text-5xl tracking-[0.2em] sm:text-6xl lg:text-7xl">
+            <span className="font-display text-4xl tracking-[0.12em] sm:text-6xl sm:tracking-[0.2em] lg:text-7xl">
               CHRISTINE
             </span>
 
-            <span className="flex items-baseline gap-4">
-              <span className="font-script text-4xl sm:text-5xl lg:text-6xl">
+            <span className="flex items-baseline gap-3 sm:gap-4">
+              <span className="font-script text-3xl sm:text-5xl lg:text-6xl">
                 &amp;
               </span>
 
-              <span className="font-display text-5xl tracking-[0.2em] sm:text-6xl lg:text-7xl">
+              <span className="font-display text-4xl tracking-[0.12em] sm:text-6xl sm:tracking-[0.2em] lg:text-7xl">
                 MATTHEW
               </span>
             </span>
@@ -48,41 +48,12 @@ export default function Page() {
         </div>
       </section>
 
-      <section className={PANEL}>
-        <div className="flex flex-col items-center">
-          <p className="max-w-xl text-lg leading-relaxed text-stone-800 sm:text-xl">
-            With love and gratitude, we invite you to
-          </p>
-          <p className="max-w-xl text-lg leading-relaxed text-stone-800 sm:text-xl">
-            share in the joy of our wedding day.
-          </p>
-        </div>
-        <div className="mt-10 flex flex-col items-center gap-1 sm:mt-14">
-          <p className="text-base text-stone-700 sm:text-lg">
-            Friday, August 13, 2027
-          </p>
-          <p className="text-base text-stone-700 sm:text-lg">
-            Tuscan Estate at Monserate Winery
-          </p>
-          <p className="text-base text-stone-700 sm:text-lg">Fallbrook, CA</p>
-        </div>
-        <div className="mt-10 sm:mt-14">
+      <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen px-4 py-16 text-center sm:px-10 sm:py-24 lg:py-28">
+        <h2 className="mx-auto max-w-3xl font-display text-2xl leading-snug tracking-[0.12em] text-stone-800 sm:text-4xl sm:tracking-[0.15em] lg:text-5xl">
+          WE&apos;RE GETTING MARRIED!
+        </h2>
+        <div className="mt-10 sm:mt-14 lg:mt-16">
           <CountdownTimer />
-        </div>
-      </section>
-
-      <section className={PANEL}>
-        <div className="flex flex-col items-center gap-4 text-center">
-          <h2 className="font-display text-4xl tracking-[0.2em] text-stone-900 sm:text-5xl">
-            Our Story
-          </h2>
-          <p className="max-w-2xl text-sm leading-7 text-stone-700 sm:text-base">
-            Write a paragraph that tells your story as a couple. You can include
-            details like how you met, your journey together, and what makes your
-            relationship unique. This is your chance to share your personality
-            and connect with your guests, giving them a glimpse into your love
-            story and what this special day means to you.
-          </p>
         </div>
       </section>
 
