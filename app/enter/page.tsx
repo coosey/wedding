@@ -5,10 +5,10 @@ export default function EnterPage() {
     <main className="grid min-h-screen place-items-center bg-stone-100 px-4 py-8 sm:px-6">
       <section className="w-full max-w-md rounded-2xl border border-stone-200 bg-white p-6 shadow-sm sm:p-8">
         <h1 className="text-2xl font-semibold tracking-tight text-stone-900 sm:text-3xl">
-          Welcome
+          Hi!
         </h1>
         <p className="mt-2 text-sm leading-6 text-stone-600 sm:text-base">
-          Enter the password from your invitation to continue.
+          Please enter the password from your invitation to continue.
         </p>
 
         <form action={unlock} className="mt-6 space-y-4 sm:mt-7">
@@ -28,9 +28,9 @@ export default function EnterPage() {
           />
           <button
             type="submit"
-            className="w-full rounded-lg bg-stone-900 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-stone-700"
+            className="w-full rounded-lg bg-[#B98F96] px-4 py-2.5 text-sm font-medium text-white transition hover:bg-stone-700"
           >
-            Enter Site
+            Continue
           </button>
         </form>
       </section>
