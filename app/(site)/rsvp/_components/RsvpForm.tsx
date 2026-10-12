@@ -1,7 +1,9 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Invitation } from "../../../../data/invitations";
+import { submitRsvp } from "../actions";
 import GuestRsvpCard from "./GuestRsvpCard";
 import { RSVPResponse } from "./types";
 
@@ -10,9 +12,11 @@ type RsvpFormProps = {
 };
 
 export default function RsvpForm({ invitation }: RsvpFormProps) {
+  const router = useRouter();
   const [responses, setResponses] = useState<Record<string, RSVPResponse>>({});
   const [submitAttempted, setSubmitAttempted] = useState(false);
   const [error, setError] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
   async function handleSubmit(event: React.SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -54,37 +58,33 @@ export default function RsvpForm({ invitation }: RsvpFormProps) {
 
     const submission = {
       invitationCode: invitation.code,
-      submittedAt: new Date().toISOString(),
       responses: invitation.guests.map((guest) => ({
         guestId: guest.id,
-        name: guest.name,
-        type: guest.type,
-        ...responses[guest.id],
+        attending: responses[guest.id].attending,
+        meal: responses[guest.id].meal || undefined,
         dietaryRestrictions:
-          responses[guest.id]?.dietaryRestrictions?.trim() || undefined,
+          responses[guest.id].dietaryRestrictions?.trim() || undefined,
       })),
     };
 
+    setSubmitting(true);
     try {
-      const response = await fetch("/api/rsvp", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(submission),
-      });
+      const result = await submitRsvp(submission);
 
-      if (!response.ok) {
-        throw new Error("Failed to submit RSVP");
+      if (result.error) {
+        setError(result.error);
+        setSubmitting(false);
+        return;
       }
 
-      // Todo: replace this with a confirmation screen.
-      console.log("RSVP submitted:", submission);
+      // Leave `submitting` on so the button stays disabled while navigating.
+      router.push(`/rsvp/${invitation.code}/confirmation`);
     } catch (error) {
       console.error(error);
       setError(
         "Something went wrong while submitting your RSVP. Please try again.",
       );
+      setSubmitting(false);
     }
   }
 
@@ -127,7 +127,8 @@ export default function RsvpForm({ invitation }: RsvpFormProps) {
 
         <button
           type="submit"
-          className="w-full rounded-lg bg-[#8D9440] px-5 py-3 text-sm font-medium text-white transition hover:bg-[#A3A969] sm:w-auto"
+          disabled={submitting}
+          className="w-full rounded-lg bg-[#8D9440] px-5 py-3 text-sm font-medium text-white transition enabled:hover:bg-[#A3A969] disabled:opacity-60 sm:w-auto"
         >
           Submit RSVP
         </button>
